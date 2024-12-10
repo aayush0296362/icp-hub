@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Adventure</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Apply a Space Background */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to bottom, #000 0%, #2b3e50 100%);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Header & Navigation Bar */
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      list-style-type: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #00ffff;
+    }
+
+    /* Home Section */
+    .home {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url('https://cdn.pixabay.com/photo/2017/08/06/07/41/space-2593022_960_720.jpg') no-repeat center/cover;
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      margin: 10px 0;
+    }
+
+    .intro button {
+      cursor: pointer;
+      background-color: #00ffff;
+      color: #000;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      transition: transform 0.2s ease;
+    }
+
+    .intro button:hover {
+      transform: scale(1.1);
+    }
+
+    /* About Section */
+    .about,
+    .rockets,
+    .contact {
+      padding: 40px 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Rocket Animation */
+    .rocket-container {
+      height: 300px;
+      position: relative;
+    }
+
+    .rocket {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: rocketLaunch 3s infinite ease-in-out;
+    }
+
+    .rocket-body {
+      width: 20px;
+      height: 100px;
+      background-color: #666;
+      border-radius: 5px;
+    }
+
+    .rocket-nose {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 20px solid red;
+      position: relative;
+      top: -20px;
+    }
+
+    .fire {
+      width: 20px;
+      height: 40px;
+      background: orange;
+      position: absolute;
+      bottom: -10px;
+      animation: fire 0.4s infinite ease-in-out;
+    }
+
+    @keyframes rocketLaunch {
+      0% {
+        transform: translateY(0) translateX(-50%);
+      }
+
+      100% {
+        transform: translateY(-300px) translateX(-50%);
+      }
+    }
+
+    @keyframes fire {
+      0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.2) translateY(-10px);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Footer Section */
+    footer {
+      padding: 10px 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.8);
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header & Navigation Bar -->
+  <header>
+    <nav>
+      <div class="logo">SpaceXplorer</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#rockets">Rockets</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Home Section -->
+  <section class="home" id="home">
+    <div class="intro">
+      <h1>Welcome to SpaceXplorer</h1>
+      <p>Embark on an interstellar journey through the stars with rocket science and innovation.</p>
+      <button onclick="scrollToRockets()">Explore Rockets</button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <h2>About Space Exploration</h2>
+    <p>
+      SpaceXplorer is a vision for discovery, exploration, and interstellar journeys. Through cutting-edge technology,
+      we aim to make space travel accessible to all.
+    </p>
+  </section>
+
+  <!-- Rocket Animation Section -->
+  <section class="rockets" id="rockets">
+    <h2>Rocket Launch Animations</h2>
+    <div class="rocket-container">
+      <div class="rocket">
+        <div class="rocket-body"></div>
+        <div class="rocket-nose"></div>
+        <div class="fire"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions? Get in touch with us and join the journey to the stars.</p>
+    <a href="mailto:contact@spacexplorer.com">contact@spacexplorer.com</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 SpaceXplorer. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function scrollToRockets() {
+      document.getElementById('rockets').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+
+</html>
